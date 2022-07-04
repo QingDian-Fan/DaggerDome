@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.dagger.project.model.ApiService;
 import com.dagger.project.model.UserManager;
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,8 +20,20 @@ public class UserModule {
         return new ApiService();
     }
 
+    @Named("mytoken")
     @Provides
-    public UserManager provideUserManager(ApiService mService){
-        return new UserManager(mService);
+    public String provideUrl(){
+        return "http://www.mytoken.io";
+    }
+
+    @Named("github")
+    @Provides
+    public String provideStr(){
+        return "https://www.github.com";
+    }
+
+    @Provides
+    public UserManager provideUserManager(ApiService mService, @Named("github") String url){
+        return new UserManager(mService,url);
     }
 }
