@@ -1,11 +1,15 @@
 package com.dagger.project.container;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import com.dagger.project.R;
 import com.dagger.project.component.DaggerUserComponent;
 import com.dagger.project.model.ApiService;
 import com.dagger.project.model.UserManager;
+import com.dagger.project.module.UserModule;
+
 import javax.inject.Inject;
 
 
@@ -24,7 +28,7 @@ public class UserActivity extends AppCompatActivity {
 
         DaggerUserComponent.create().inject(this);
 
-       // DaggerUserComponent.builder().userModule(new UserModule()).build();
+      //  new DaggerUserComponent.Builder().userModule(new UserModule()).build();
 
         mService.register();
 
