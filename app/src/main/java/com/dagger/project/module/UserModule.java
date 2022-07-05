@@ -7,25 +7,26 @@ import com.dagger.project.model.ApiService;
 import com.dagger.project.model.UserManager;
 import javax.inject.Named;
 
+
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
 
 
-
-@Module
+@Module//(includes = HttpModule.class)
 public class UserModule {
 
     @Provides
-    public ApiService provideApiService(){
+    public ApiService provideApiService(OkHttpClient client){
 
         Log.e("TAGTAG", "UserModule------>provideApiService: ");
-        return new ApiService();
+        return new ApiService(client );
     }
 
-    @Named("mytoken")
+    @Named("gitee")
     @Provides
     public String provideUrl(){
-        return "http://www.mytoken.io";
+        return "http://www.gitee.com";
     }
 
     @Named("github")
