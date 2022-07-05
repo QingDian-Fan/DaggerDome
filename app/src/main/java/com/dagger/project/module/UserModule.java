@@ -37,6 +37,7 @@ public class UserModule {
 
     @Provides
     public UserManager provideUserManager(ApiService mService, @Named("github") String url){
+
         return new UserManager(mService,url);
     }
 }
